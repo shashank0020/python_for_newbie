@@ -29,6 +29,21 @@ class STRING():
         else:
             decode_list=psidialogs.choice(choices=['base64','bz2','hex','quopri','uu','zlib'], message='Pick something.', default=None, title='Encode choice')
             return self.val.decode(decode_list,'strict')
+
+    def str_endswith(self):
+        suffix=psidialogs.ask_string(message='Enter String .', default='', title='endswith()')
+        start_pos=psidialogs.ask_string(message='Enter starting position.', default='', title='endswith()')
+        end_pos=psidialogs.ask_string(message='Enter ending position.', default='', title='endswith()')
+        return self.val.endswith(suffix,int(start_pos),int(end_pos))
+
+
+    def str_expandtabs(self):
+        tab_str=psidialogs.ask_string(message='Enter String and put\t.', default='', title='expandtabs()')
+        tab_val=psidialogs.ask_string(message='Enter Tab value.', default='', title='expandtabs()')
+        
+        return tab_str.expandtabs(int(tab_val))
+        
+    
     
         
 
@@ -38,7 +53,7 @@ if __name__ == "__main__":
     str_a1=STRING(input_str)
     
     while True:
-        str_methods=psidialogs.choice(choices=['capital()','center()','count()','encode()_decode()','Exit'], message='Make a choice.', default=None, title='Strings')
+        str_methods=psidialogs.choice(choices=['capital()','center()','count()','encode()_decode()','endswith()','expandtabs()','Exit'], message='Make a choice.', default=None, title='Strings')
         if str_methods=='capital()':
             print str_a1.str_capital()
         
@@ -51,6 +66,12 @@ if __name__ == "__main__":
 
         elif str_methods=='encode()_decode()':
             print str_a1.str_encode_decode()
+
+        elif str_methods=='endswith()':
+            print str_a1.str_endswith()
+
+        elif str_methods=='expandtabs()':
+            print str_a1.str_expandtabs()
             
 
         elif str_methods=='Exit':
