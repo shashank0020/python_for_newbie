@@ -1,4 +1,5 @@
 import psidialogs
+from string import maketrans
 
 class STRING():
     def __init__(self,val):
@@ -40,12 +41,76 @@ class STRING():
     def str_expandtabs(self):
         tab_str=psidialogs.ask_string(message='Enter String and put\t.', default='', title='expandtabs()')
         tab_val=psidialogs.ask_string(message='Enter Tab value.', default='', title='expandtabs()')
-        
+        from string import maketrans
         return tab_str.expandtabs(int(tab_val))
+
+    def str_find(self):
+        sub_str=psidialogs.ask_string(message='Enter Substring', default='', title='index()')
+        start_point=psidialogs.ask_string(message='Enter Starting point', default='', title='find()')
+        end_point=psidialogs.ask_string(message='Enter Starting point.', default='', title='find()')
         
+        return self.val.find(sub_str,int(start_point),int(end_point))
+    
+    def str_index(self):
+        sub_str=psidialogs.ask_string(message='Enter Substring', default='', title='index()')
+        start_point=psidialogs.ask_string(message='Enter Starting point', default='', title='index()')
+        end_point=psidialogs.ask_string(message='Enter Starting point.', default='', title='index()')
+        return self.val.index(sub_str,int(start_point),int(end_point))
+        
+
+    def str_isalnum(self):
+        return self.val.isalnum()
+
+    def str_isalpha(self):
+        return self.val.isalpha()
+
+    def str_isdigit(self):
+        return self.val.isdigit()
+
+    def str_isnumeric(self):
+        return self.val.isnumeric()
+
+    def str_isspace(self):
+        return self.val.isspace()
+
+    def str_islower(self):
+        return self.val.islower()
+
+    def str_istitle(self):
+        return self.val.istitle()
+
+    def str_isupper(self):
+        return self.val.isupper()
+
+    def str_join(self):
+        str_join=psidialogs.ask_string(message='Enter join string.', default='', title='join()')
+        str_seq=psidialogs.ask_string(message='Enter sequence(tuple).', default='', title='join()')
+        return self.str_join.join(str_seq)
+
+    def str_len(self):
+        return self.val.len()
+
+    def str_ljust(self):
+        width=psidialogs.ask_string(message='Enter width.', default='', title='ljust()')
+        fillchar=psidialogs.ask_string(message='Enter sttring to fill .', default='', title='ljust()')
+        return self.str_join.join(str_seq)
+
+    def str_lower(self):
+        return self.val.lower()
+    
+
+    def str_maketrans(self):
+        intab=psidialogs.ask_string(message='Enter vowels', default='', title='maketrans()')
+        outab=psidialogs.ask_string(message='Enter vowels replacement', default='', title='maketrans()')
+        maketrans_obj= maketrans(intab,outab)
+        return self.val.maketrans(maketrans_obj)
     
     
-        
+    def str_max(self):
+        return max(self.val)
+    
+    def str_min(self):
+        return min(self.val)    
 
 
 if __name__ == "__main__":
@@ -53,7 +118,11 @@ if __name__ == "__main__":
     str_a1=STRING(input_str)
     
     while True:
-        str_methods=psidialogs.choice(choices=['capital()','center()','count()','encode()_decode()','endswith()','expandtabs()','Exit'], message='Make a choice.', default=None, title='Strings')
+        str_methods=psidialogs.choice(choices=['capital()','center()','count()',\
+        'encode()_decode()','endswith()','expandtabs()','find()','index()',\
+        'isalnum()','isalpha()','isdigit()','isnumeric()',\
+        'isspace()','istitle()','isupper()',\
+        'join()','len()','ljust()','lower()','maketrans()','max()','min()','Exit'], message='Make a choice.', default=None, title='Strings')
         if str_methods=='capital()':
             print str_a1.str_capital()
         
@@ -72,6 +141,58 @@ if __name__ == "__main__":
 
         elif str_methods=='expandtabs()':
             print str_a1.str_expandtabs()
+
+        elif str_methods=='find()':
+            print str_a1.str_find()
+
+        elif str_methods=='index()':
+            print str_a1.str_index()
+
+        elif str_methods=='isalnum()':
+            print str_a1.str_isalnum()
+
+        elif str_methods=='isalpha()':
+            print str_a1.str_isalpha()            
+
+        elif str_methods=='isdigit()':
+            print str_a1.str_isdigit()
+            
+        elif str_methods=='isnumeric()':
+            print str_a1.str_isdigit()
+
+        elif str_methods=='istitle':
+            print str_a1.str_isdigit()
+
+        elif str_methods=='isspace()':
+            print str_a1.str_isdigit()
+
+        elif str_methods=='islower()':
+            print str_a1.str_isdigit()
+
+        elif str_methods=='isupper()':
+            print str_a1.str_isdigit()
+
+###########
+        elif str_methods=='join()':
+            print str_a1.str_join()()
+
+        elif str_methods=='len()':
+            print str_a1.str_len()
+
+        elif str_methods=='ljust()':
+            print str_a1.str_ljust()
+
+        elif str_methods=='lower()':
+            print str_a1.str_lower()
+
+        elif str_methods=='maketrans()':
+            print str_a1.str_maketrans()
+
+        elif str_methods=='max()':
+            print str_a1.str_max()
+
+        elif str_methods=='min()':
+            print str_a1.str_min()
             
 
         elif str_methods=='Exit':
